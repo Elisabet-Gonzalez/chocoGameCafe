@@ -18,7 +18,7 @@ public class IngredientManager : MonoBehaviour
         int randomNum = Random.Range(0, array.Length);
         GameObject spawnedObject = Instantiate(array[randomNum], new Vector3(x, y, z), Quaternion.identity);
         spawnedObjects.Add(spawnedObject);
-        Debug.Log(spawnedObject);
+        
 
     }
 
