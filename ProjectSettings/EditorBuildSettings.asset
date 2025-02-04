@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/OrderScene.unity
     guid: 18ec5e7c0aeff18459945204951b27a5
+  - enabled: 1
+    path: Assets/Scenes/CoffeeStation.unity
+    guid: b0638998ac74dc44faf1d66229cffa93
   m_configObjects: {}
