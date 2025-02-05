@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CostumerGenerator : MonoBehaviour
 {
-    IngredientManager ingredientManager;
+    IngredientManager ing;
     
     [SerializeField] private GameObject[] normalCostumer;
     [SerializeField] private GameObject[] specialCostumer;
@@ -12,27 +12,27 @@ public class CostumerGenerator : MonoBehaviour
 
      void Start()
     {
-       ingredientManager =  GameObject.Find("OrderLogic").GetComponent<IngredientManager>();
+       ing =  GameObject.Find("OrderLogic").GetComponent<IngredientManager>();
 
         
     }
 
     public void GenerateCostumer()
     {
-        ingredientManager.GoRandom(3.5f, 0.46f, 0, normalCostumer);
-        ingredientManager.Randomizer();
+        ing.GoRandom(3.5f, 0.46f, 0, normalCostumer);
+        ing.Randomizer();
 
     }
 
     public void Bye()
     {
-        ingredientManager.ClearAll();
+        ing.ClearAll();
     }
 
     //fortunately it is connected
     public void Test()
     {
-        ingredientManager.Randomizer();
+        ing.Randomizer();
         Debug.Log("TeeHee");
     }
 }
