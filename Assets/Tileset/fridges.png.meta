@@ -170,7 +170,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fridge2Open
+      name: fridgeOpen
       rect:
         serializedVersion: 2
         x: 800
@@ -243,10 +243,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      fridge2Open: -2063950238
       fridgeClose: 739682497
       fridgeIc: -73729949
       fridgeMilk: 220795912
+      fridgeOpen: -2063950238
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
