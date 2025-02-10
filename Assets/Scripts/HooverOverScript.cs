@@ -9,7 +9,7 @@ public class HooverOverScript : MonoBehaviour
     // Probably will do by calling that script but we will see later ;)
     private SpriteRenderer rend;
     [SerializeField]private Sprite sprite1, sprite2;
-    private bool onImage = false;
+    
 
     private void Start()
     {
@@ -20,11 +20,13 @@ public class HooverOverScript : MonoBehaviour
     private void OnMouseExit()
     {
         assignNew(sprite1);
+        Debug.Log("you are out");
     }
 
     private void OnMouseOver()
     {
         assignNew(sprite2);
+        Debug.Log("you are in");
     }
 
     
