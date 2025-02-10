@@ -1,32 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.Device;
 
 public class OriginalObject : MonoBehaviour
 {
-    //Second try of the code
-    [SerializeField] GameObject thing;
+    Draggable drag;
+    [SerializeField] GameObject thing; 
     private GameObject copyThing;
-    private bool visible = false;
-    private Vector2 ogPosition;
+    public Collider2D delete;
+    private bool onScreen;
     [SerializeField] float zPos;
+
 
     private void OnMouseDown()
     {
-        whenYouClick(visible);
-    }
-
-
-    public void whenYouClick(bool onScreen)
-    {
+        // If there is no copy on screen, then make one
         if (!onScreen)
         {
             onScreen = true;
-
+            // Create object
             copyThing = Instantiate(thing, transform.position, transform.rotation);
-        }
+            // Add the Draggable script to the cloned object
+            Draggable draggable = copyThing.GetComponent<Draggable>();
+            draggable.original = this;
+            Debug.Log("New object created!");
+            
 
-        copyThing.AddComponent<Draggable>();
-        Debug.Log("New Object!!1");
+        }
+  
+    
     }
+
+    public void Destroyed()
+    {
+        onScreen=false;
+        Debug.Log("Destroyed");
+    }
+
 }
+
+
+
+  

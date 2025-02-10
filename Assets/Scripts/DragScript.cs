@@ -52,7 +52,7 @@ public class DragScript : MonoBehaviour
         dragged = false;
     }
 
-    Vector2 GetMousePos()
+     public Vector2 GetMousePos()
     {
         return Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }

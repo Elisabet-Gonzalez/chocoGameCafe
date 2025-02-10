@@ -1,47 +1,80 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class FridgeScript : MonoBehaviour
 {
-    HooverOverScript hov;
     [SerializeField] GameObject milk;
     [SerializeField] GameObject ice;
-    private SpriteRenderer rend;
-    private Sprite sprite1;
-    private Sprite sprite2;
-    private bool onScreen = false;
-    private bool dragged = false;
+
+    private bool dragged;
+    private float zPos = -2.5f;
+    
+    public Collider2D milkArea;
+    public Collider2D iceArea;
+
+    private GameObject draggedObject;
     private Vector2 dragOffset;
     private Vector2 ogPosition;
 
-    private void Awake()
-    {
-        ogPosition = transform.position;
-    }
-
     void Start()
     {
-        
+  
+        milk.SetActive(false);
+        ice.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-       
+        if (dragged && draggedObject != null)
+        {
+            Vector2 mousePosition = GetMousePos();
+            draggedObject.transform.position = new Vector3(mousePosition.x - dragOffset.x, mousePosition.y - dragOffset.y, zPos);
+        }
+        
     }
 
-    public void OnMouseDown()
+    private void OnMouseDown()
     {
-       
+        
+        var mousePosition = GetMousePos();
+
+        if (milkArea.OverlapPoint(mousePosition))
+        {
+            DragObject(milk);
+        }
+        else if (iceArea.OverlapPoint(mousePosition))
+        {
+            DragObject(ice);
+            Debug.Log("Ice made");
+        }
     }
 
-    private void OnMouseOver()
+    private void OnMouseUp()
     {
-        hov.assignNew(sprite1);
+        if (draggedObject != null)
+        {
+            draggedObject.transform.position = ogPosition;
+            draggedObject.SetActive(false);
+            draggedObject = null;
+            dragged = false;
+        }
+
     }
-    private void OnMouseExit()
+
+    private void DragObject(GameObject obj)
     {
-        hov.assignNew(sprite2);
+        draggedObject = obj;
+        ogPosition = obj.transform.position;
+        draggedObject.SetActive(true);
+        dragOffset = GetMousePos() - (Vector2)draggedObject.transform.position;
+        dragged = true;
     }
+    Vector2 GetMousePos()
+    {
+        return Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    }
+
 }

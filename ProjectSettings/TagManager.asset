@@ -3,7 +3,21 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ice
+  - Milk
+  - Coffee
+  - CaramelSyrup
+  - ChocolateSyrup
+  - StrawberrySyrup
+  - VainillaSyrup
+  - ChocoSauce
+  - StrawberrySauce
+  - WhippedCream
+  - ChocoChips
+  - CaramelCrunch
+  - CookieCrumbl
+  - DeleteArea
   layers:
   - Default
   - TransparentFX
