@@ -8,9 +8,11 @@ public class DragScript : MonoBehaviour
     private Quaternion ogRotation;
     [SerializeField] private Vector3 newRotation;
     private Vector2 ogPosition;
+    private bool cameBack = true;
     private bool dragged = false;
     private Vector2 dragOffset;
     [SerializeField] float zPos;
+    
 
     private void Awake()
     { 
@@ -37,6 +39,7 @@ public class DragScript : MonoBehaviour
     private void OnMouseDown()
     {
         dragged = true;
+        cameBack = false;
         //YK move it
         dragOffset = GetMousePos() - (Vector2)transform.position;
         /*Euler as in the degrees that our object has rotated on the z axis, so I would like to guess that Quaternion.Euler tells our computer 
@@ -50,6 +53,7 @@ public class DragScript : MonoBehaviour
        transform.position = ogPosition;
        transform.rotation = ogRotation;
         dragged = false;
+        cameBack = true;
     }
 
      public Vector2 GetMousePos()
@@ -57,4 +61,10 @@ public class DragScript : MonoBehaviour
         return Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 
+    public bool CameBack()
+    {
+
+        return cameBack;
+    }
+    
 }
