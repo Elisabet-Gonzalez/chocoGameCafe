@@ -19,18 +19,18 @@ public class HooverOverScript : MonoBehaviour
 
     private void OnMouseExit()
     {
-        assignNew(sprite1);
-        Debug.Log("you are out");
+        AssignNew(sprite1);
+      //Debug.Log("you are out");
     }
 
     private void OnMouseOver()
     {
-        assignNew(sprite2);
-        Debug.Log("you are in");
+        AssignNew(sprite2);
+      //Debug.Log("you are in");
     }
 
     
-    public void assignNew(Sprite sprite)
+    public void AssignNew(Sprite sprite)
     {
         rend.sprite = sprite;
     }

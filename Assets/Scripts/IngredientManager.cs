@@ -11,6 +11,9 @@ public class IngredientManager : MonoBehaviour
     [SerializeField] private GameObject[] temp;
     [SerializeField] private GameObject[] flavor;
     [SerializeField] private GameObject[] toppings;
+
+
+    public string[] orderList;
     private List<GameObject> spawnedObjects = new List<GameObject>();
     
     public void GoRandom(float x, float y, float z, GameObject[] array)
