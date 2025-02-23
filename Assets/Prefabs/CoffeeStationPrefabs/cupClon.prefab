@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1926829336065778900
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6055379151618252131}
+  m_Layer: 0
+  m_Name: ToppingLayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6055379151618252131
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1926829336065778900}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 594006690303420105}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4930218634900799945
 GameObject:
   m_ObjectHideFlags: 0
@@ -14,6 +45,7 @@ GameObject:
   - component: {fileID: 2618811150358557335}
   - component: {fileID: 5358703594395842489}
   - component: {fileID: 3431438175363668887}
+  - component: {fileID: -6549811588128279398}
   m_Layer: 0
   m_Name: cupClon
   m_TagString: Untagged
@@ -33,7 +65,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6055379151618252131}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1185157208742335933
@@ -147,6 +180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   original: {fileID: 0}
   zPos: -2
+  attach: {fileID: 0}
 --- !u!114 &5358703594395842489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,6 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   original: {fileID: 0}
+  milkReady: 0
 --- !u!50 &3431438175363668887
 Rigidbody2D:
   serializedVersion: 4
@@ -187,3 +222,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-6549811588128279398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4930218634900799945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f84e2486edfb3774ba6f4ed9887d0de9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toppingSprites:
+  - {fileID: -551745348, guid: e2d96f05fc448ce4a810970d59c4db7c, type: 3}
+  - {fileID: 527926581, guid: e2d96f05fc448ce4a810970d59c4db7c, type: 3}
+  - {fileID: -548320086, guid: e2d96f05fc448ce4a810970d59c4db7c, type: 3}
+  - {fileID: -639834900, guid: e2d96f05fc448ce4a810970d59c4db7c, type: 3}
+  - {fileID: -1914595578, guid: e2d96f05fc448ce4a810970d59c4db7c, type: 3}
+  - {fileID: 960662852, guid: e2d96f05fc448ce4a810970d59c4db7c, type: 3}
+  toppingLayer: {fileID: 6055379151618252131}
+  yNum: 0.65
+  xNum: -0.15
