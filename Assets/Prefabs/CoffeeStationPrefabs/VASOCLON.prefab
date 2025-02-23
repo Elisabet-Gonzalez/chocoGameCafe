@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7441104962682634684}
   - component: {fileID: 7357472256488962111}
   m_Layer: 0
-  m_Name: vasoClon
+  m_Name: VasoClon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
