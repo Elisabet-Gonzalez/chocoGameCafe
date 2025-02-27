@@ -8,6 +8,7 @@ TagManager:
   - Milk
   - Drink
   - ToppingArea
+  - Bag
   layers:
   - Default
   - TransparentFX

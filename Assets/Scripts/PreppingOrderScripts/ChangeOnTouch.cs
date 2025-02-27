@@ -20,11 +20,18 @@ public class ChangeOnTouch : MonoBehaviour
     private bool onCoffeeMachine = false;
 
     public bool milkReady = false;
+
+    [SerializeField] private PlayerDrink drink;
     
 
     public void Attach(AttachAndAnimate atAndAnim)
     {
         attach = atAndAnim;
+    }
+
+    public void Drink(PlayerDrink d)
+    {
+        drink = d;
     }
 
     // Start is called before the first frame update
@@ -56,6 +63,7 @@ public class ChangeOnTouch : MonoBehaviour
             {
                 rend.sprite = original.sMilk;
                 milkReady = true;
+                drink.AddIngredient("Regular");
             }
         }
 
@@ -65,22 +73,25 @@ public class ChangeOnTouch : MonoBehaviour
             {
                 coroutine = SyrupAnim(original.sCrml, anim);
                 StartCoroutine(coroutine);
-
+                drink.replaceIngredient("Caramel", 1);
             }
             else if (collision.gameObject.name == "ChocoSyrupArea" && anim2 != null)
             {
                 coroutine = SyrupAnim(original.sChoco, anim2);
                 StartCoroutine(coroutine);
+                drink.replaceIngredient("Chocolate", 1);
             }
             else if (collision.gameObject.name == "StrawSyrupArea" && anim3 != null)
             {
                 coroutine = SyrupAnim(original.sStraw, anim3);
                 StartCoroutine(coroutine);
+                drink.replaceIngredient("Strawberry", 1);
             }
             else if (collision.gameObject.name == "VaiSyrupArea" && anim4 != null)
             {
                 coroutine = SyrupAnim(original.sVai, anim4);
                 StartCoroutine(coroutine);
+                drink.replaceIngredient("Vainilla", 1);
             }
         } 
 
@@ -103,7 +114,7 @@ public class ChangeOnTouch : MonoBehaviour
         if(collision.gameObject.name == "CrmlSyrupArea" && anim != null && milkReady)
         {
             anim.ResetTrigger("WhenCollide");
-            Debug.Log("Reset");
+            
         }
         if(collision.gameObject.name == "CupPlace")
         {
@@ -117,7 +128,7 @@ public class ChangeOnTouch : MonoBehaviour
     {
         anim.SetTrigger("WhenCollide");
 
-        Debug.Log("Syrup going in!");
+        
 
         yield return new WaitForSeconds(0.5f);
 

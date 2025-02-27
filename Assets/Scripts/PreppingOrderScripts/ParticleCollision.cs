@@ -6,15 +6,22 @@ using UnityEngine;
 
 public class ParticleCollision : MonoBehaviour
 {
+    [SerializeField] PlayerDrink drink;
     public Sprite[] toppingSprites;
     public Transform toppingLayer;
     [SerializeField] private float yNum;
     [SerializeField] private float xNum;
     private bool onArea = false;
     ChangeOnTouch change;
-   
+    public int counter = 0;
 
     private ParticleSystem particleSys;
+
+    public void Drink(PlayerDrink d)
+    {
+        drink = d;
+    }
+
 
     private void Start()
     {
@@ -35,35 +42,47 @@ public class ParticleCollision : MonoBehaviour
 
 
 
-        if(other.gameObject.name == "cookieCrumbl" && onArea && change.milkReady)
+        if(other.gameObject.name == "cookieCrumbl" && onArea && change.milkReady && counter < 2)
         {
             AddTopping(toppingSprites[0], yNum,-2);
+            counter++;
+            drink.AddIngredient("CookieCrumbl");
         }
 
-        if(other.gameObject.name == "CrmelCrunch" && onArea && change.milkReady)
+        if(other.gameObject.name == "CrmelCrunch" && onArea && change.milkReady && counter < 2)
         {
             AddTopping(toppingSprites[1], yNum, -2);
+            counter++;
+            drink.AddIngredient("CaramelCrunch");
         }
 
-        if(other.gameObject.name == "ChocoChips" && onArea && change.milkReady)
+        if(other.gameObject.name == "ChocoChips" && onArea && change.milkReady && counter < 2)
         {
             AddTopping(toppingSprites[2], yNum, -2);
+            counter++;
+            drink.AddIngredient("ChocoChips");
         }
 
-        if(other.gameObject.name == "ChocoSyrup" && onArea && change.milkReady)
+        if(other.gameObject.name == "ChocoSyrup" && onArea && change.milkReady && counter < 2)
         {
             AddTopping(toppingSprites[3], yNum, -2);
+            counter++;
+            drink.AddIngredient("ChocoSyrup");
         }
 
-        if (other.gameObject.name == "StrawberrySyrup" && onArea && change.milkReady)
+        if (other.gameObject.name == "StrawberrySyrup" && onArea && change.milkReady && counter < 2)
         {
-            AddTopping(toppingSprites[4], yNum, -2);
+            AddTopping(toppingSprites[4], yNum, -2);   
+            counter++;
+            drink.AddIngredient("StrawberrySyrup");
 
         }
 
-        if(other.gameObject.name == "cream" && onArea && change.milkReady)
+        if(other.gameObject.name == "cream" && onArea && change.milkReady && counter < 2)
         {
-            AddTopping(toppingSprites[5], yNum, -1);
+            AddTopping(toppingSprites[5], yNum, -1);    
+            counter++;
+            drink.AddIngredient("WhippedCream");
         }
     }
 
@@ -95,5 +114,6 @@ public class ParticleCollision : MonoBehaviour
         renderer.sortingOrder = toppingLayer.childCount;
     }
 
+    
     
 }

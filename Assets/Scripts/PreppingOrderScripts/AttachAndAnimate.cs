@@ -6,6 +6,7 @@ using UnityEngine.Rendering;
 
 public class AttachAndAnimate : MonoBehaviour
 {
+    
     DragScript drag;
     ChangeOnTouch change;
    // [SerializeField] private Transform targetArea;
@@ -18,7 +19,7 @@ public class AttachAndAnimate : MonoBehaviour
     private SpriteRenderer rend;
     private bool coffeGroundP = false;
    
-    private bool onArea = false;
+    
 
     public bool coffeeOnObject = false;
 
@@ -82,12 +83,12 @@ public class AttachAndAnimate : MonoBehaviour
     void BeginAnim()
     {
         
-        onArea = true;
+        
 
         if(anim != null)
         {
             anim.SetTrigger("Animate");
-            Debug.Log("Is Animating");
+            
         }
 
         Coroutine = WaitAndAnim();
@@ -98,7 +99,7 @@ public class AttachAndAnimate : MonoBehaviour
     private IEnumerator WaitAndAnim()
     {
 
-        Debug.Log("Coroutine is running");
+        
 
         anim.ResetTrigger("Animate");
 
@@ -106,14 +107,14 @@ public class AttachAndAnimate : MonoBehaviour
 
         yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
 
-        onArea = false;
+        
        
         coffeGroundP = true;
     }
 
     private IEnumerator WaitandPour()
     {
-        Debug.Log("Runnnnnnn");
+        
         anim.ResetTrigger("goFull");
 
         
@@ -138,7 +139,7 @@ public class AttachAndAnimate : MonoBehaviour
 
         coffeGroundP = false;
         coffeeOnObject = true;
-        Debug.Log(coffeeOnObject);
+        
 
     }
 

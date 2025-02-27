@@ -14,16 +14,23 @@ public class Draggable : MonoBehaviour
     private Collision2D coll;
     public AttachAndAnimate attach;
     private ChangeOnTouch change;
-
+   [SerializeField] private PlayerDrink drink;
+    [SerializeField] ParticleCollision particle;
 
 
     private void Start()
     {
         change = GetComponent<ChangeOnTouch>();
+        particle = GetComponent<ParticleCollision>();
     }
     public void Attach(AttachAndAnimate atAndAnim)
     {
         attach = atAndAnim;
+    }
+
+    public void Drink(PlayerDrink d)
+    {
+        drink = d;
     }
 
     private void OnMouseDown()
@@ -65,6 +72,8 @@ public class Draggable : MonoBehaviour
             dragged = false;
             attach.coffeeOnObject = false;
             change.milkReady = false;
+            drink.ClearDrink();
+            particle.counter = 0;
         }
     }
 

@@ -15,8 +15,10 @@ public class DragScript : MonoBehaviour
     
 
     private void Awake()
-    { 
+    {
         //get em og postions heuheheu
+
+        zPos = transform.position.z;
         ogPosition = transform.position;
         ogRotation = transform.rotation;
     }
