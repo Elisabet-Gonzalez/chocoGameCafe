@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using UnityEditor.Experimental.GraphView;
 using UnityEditor.Tilemaps;
 using UnityEngine;
 
@@ -11,14 +12,27 @@ public class Draggable : MonoBehaviour
     private Vector2 dragOffset;
     [SerializeField] float zPos = -2f;
     private Collision2D coll;
+    public AttachAndAnimate attach;
+    private ChangeOnTouch change;
+   [SerializeField] private PlayerDrink drink;
+    [SerializeField] ParticleCollision particle;
 
 
     private void Start()
     {
-        original = FindObjectOfType<OriginalObject>();
-        
-
+        change = GetComponent<ChangeOnTouch>();
+        particle = GetComponent<ParticleCollision>();
     }
+    public void Attach(AttachAndAnimate atAndAnim)
+    {
+        attach = atAndAnim;
+    }
+
+    public void Drink(PlayerDrink d)
+    {
+        drink = d;
+    }
+
     private void OnMouseDown()
     {
         dragged = true;
@@ -50,19 +64,29 @@ public class Draggable : MonoBehaviour
         var mousePos = GetMousePos();
         if (original.delete.OverlapPoint(mousePos))
         {
-            
+
             Debug.Log("Ew trash");
             original.Destroyed();
+            DrinkManager.Instance.RemoveDrink();
             Destroy(gameObject);
             dragged = false;
-            
+            attach.coffeeOnObject = false;
+            change.milkReady = false;
+            drink.ClearDrink();
+            particle.counter = 0;
         }
     }
 
-    public bool returnDragged()
+    private void OnDestroy()
     {
-        return dragged;
+        if(DrinkManager.Instance != null)
+        {
+            
+            DrinkManager.Instance.RemoveDrink();
+        }
     }
+
+
     Vector2 GetMousePos()
     {
         return Camera.main.ScreenToWorldPoint(Input.mousePosition);

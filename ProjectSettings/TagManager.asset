@@ -6,18 +6,9 @@ TagManager:
   tags:
   - Ice
   - Milk
-  - Coffee
-  - CaramelSyrup
-  - ChocolateSyrup
-  - StrawberrySyrup
-  - VainillaSyrup
-  - ChocoSauce
-  - StrawberrySauce
-  - WhippedCream
-  - ChocoChips
-  - CaramelCrunch
-  - CookieCrumbl
-  - DeleteArea
+  - Drink
+  - ToppingArea
+  - Bag
   layers:
   - Default
   - TransparentFX

@@ -1,38 +1,58 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class CostumerGenerator : MonoBehaviour
 {
-    IngredientManager ing;
+   [SerializeField] IngredientManager ing;
     
     [SerializeField] private GameObject[] normalCostumer;
     [SerializeField] private GameObject[] specialCostumer;
+   [SerializeField] private GameObject spawnedObject;
 
-
-     void Start()
+    private void Start()
     {
-       ing =  GameObject.Find("OrderLogic").GetComponent<IngredientManager>();
-
-        
+         ing = GameObject.Find("OrderLogic").GetComponent<IngredientManager>();
     }
+
+
+
 
     public void GenerateCostumer()
     {
-        ing.GoRandom(3.5f, 0.46f, 0, normalCostumer);
+
         ing.Randomizer();
 
+        spawnedObject = CostumRandom(3.5f, 0.46f, 0f, normalCostumer);
+        
+        if (spawnedObject != null)
+        {
+
+            Debug.Log("No te gira el chicharo");
+        }
+        else
+        {
+
+
+            OrderManager.Instance.setOrder(spawnedObject, ing.orderList);
+            
+        }
+        
     }
 
     public void Bye()
     {
         ing.ClearAll();
+        Destroy(spawnedObject);
     }
 
-    //fortunately it is connected
-    public void Test()
+    private GameObject CostumRandom(float x, float y, float z, GameObject[] array)
     {
-        ing.Randomizer();
-        Debug.Log("TeeHee");
+        int randomNum = Random.Range(0, array.Length);
+         return Instantiate(array[randomNum], new Vector3(x, y, z), Quaternion.identity);
+        
+        
     }
+
 }
