@@ -1,17 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Build.Content;
 using UnityEngine;
 
 public class DayManager : MonoBehaviour
 {
-    public static DayManager Instance {  get; private set; }
+    public static DayManager Instance { get; private set; }
 
     [SerializeField] private CostumerGenerator orderAndCos;
     private int currentDay = 0; //the day duh
     private int currentDayIndex = 0;
     private string[] timeSegments = { "Morning", "Early Afternoon", "Late Afternoon", "Night" };
-    
+
     private int ordersCompleted = 0;
 
     private int money;
@@ -30,7 +29,7 @@ public class DayManager : MonoBehaviour
     }
 
     private void Start()
-    { 
+    {
         StartNewDay();
     }
 
@@ -45,7 +44,7 @@ public class DayManager : MonoBehaviour
 
     private void GenerateOrders()
     {
-        if(ordersCompleted < timeSegments.Length)
+        if (ordersCompleted < timeSegments.Length)
         {
             orderAndCos.GenerateCostumer();
         }
@@ -69,12 +68,5 @@ public class DayManager : MonoBehaviour
         currentDay++;
         StartNewDay();
     }
-
-
-
-
-
-
-
 
 }
