@@ -1,3 +1,5 @@
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,13 +32,18 @@ public class DayManager : MonoBehaviour
 
     private void Start()
     {
+        orderAndCos= GameObject.Find("CostumerLogic").GetComponent<CostumerGenerator>();
+
         StartNewDay();
     }
 
     public void StartNewDay()
     {
         currentDay++;
+
        // currentDayIndex = 0; //start at the morning
+
+        //currentDayIndex = 0; //start at the morning
         GenerateOrders();
 
 

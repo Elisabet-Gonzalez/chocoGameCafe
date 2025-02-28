@@ -84,42 +84,42 @@ public class IngredientManager : MonoBehaviour
 
                 firstTopping = false;
             }
+
         }
 
 
+            Debug.Log("Recreated Order: " + string.Join(", ", order));
+        }
 
-        Debug.Log("Recreated Order: " + string.Join(", ", order));
-    }
-
-    private bool IngredientInArray(string ingredient, GameObject[] array)
-    {
-        foreach (GameObject obj in array)
+        private bool IngredientInArray(string ingredient, GameObject[] array)
         {
-            if (obj.name == ingredient)
+            foreach (GameObject obj in array)
             {
+                if (obj.name == ingredient)
+                {
 
-                return true;
+                    return true;
+                }
+            }
+            return false;
+
+        }
+
+        private void SpawnVisual(float x, float y, float z, GameObject[] ingredients, string name)
+        {
+            foreach (var ingredient in ingredients)
+            {
+                if (ingredient.name == name)
+                {
+                    GameObject spawnedObject = Instantiate(ingredient, new Vector3(x, y, z), Quaternion.identity);
+                    spawnedObjects.Add(spawnedObject);
+
+                    orderList.Add(name);
+
+                    break;
+
+                }
             }
         }
-        return false;
-
-    }
-
-    private void SpawnVisual(float x, float y, float z, GameObject[] ingredients, string name)
-    {
-        foreach (var ingredient in ingredients)
-        {
-            if (ingredient.name == name)
-            {
-                GameObject spawnedObject = Instantiate(ingredient, new Vector3(x, y, z), Quaternion.identity);
-                spawnedObjects.Add(spawnedObject);
-
-                orderList.Add(name);
-
-                break;
-
-            }
-        }
-    }
-}
+    } 
     
