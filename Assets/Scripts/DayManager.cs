@@ -40,6 +40,9 @@ public class DayManager : MonoBehaviour
     public void StartNewDay()
     {
         currentDay++;
+
+       // currentDayIndex = 0; //start at the morning
+
         //currentDayIndex = 0; //start at the morning
         GenerateOrders();
 
