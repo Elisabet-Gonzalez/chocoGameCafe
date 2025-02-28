@@ -8,7 +8,7 @@ public class DayManager : MonoBehaviour
 
     [SerializeField] private CostumerGenerator orderAndCos;
     private int currentDay = 0; //the day duh
-    private int currentDayIndex = 0;
+    //private int currentDayIndex = 0;
     private string[] timeSegments = { "Morning", "Early Afternoon", "Late Afternoon", "Night" };
 
     private int ordersCompleted = 0;
@@ -36,7 +36,7 @@ public class DayManager : MonoBehaviour
     public void StartNewDay()
     {
         currentDay++;
-        currentDayIndex = 0; //start at the morning
+       // currentDayIndex = 0; //start at the morning
         GenerateOrders();
 
 
